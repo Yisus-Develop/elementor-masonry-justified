@@ -1,0 +1,140 @@
+/* Scope local */
+.emj-scope{isolation:isolate}
+.emj-scope, .emj-scope *{box-sizing:border-box}
+.emj-scope a{color:inherit;text-decoration:none;background:transparent;border:0;outline:0}
+.emj-scope img{display:block;border:0;max-width:none;height:auto}
+
+/* Contenedor */
+.emj-scope .emj-wrap{position:relative;width:100%}
+
+/* CAROUSEL */
+.emj-scope .emj-carousel {
+    width: 100%;
+    position: relative;
+    padding-bottom: 40px; /* Space for pagination */
+    overflow: hidden; /* Important for Swiper */
+}
+.emj-scope .emj-carousel .swiper-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+.emj-scope .emj-carousel .swiper-slide {
+    flex-shrink: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.emj-scope .emj-carousel .emj-item {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3; /* Fixed aspect ratio for carousel items */
+}
+.emj-scope .emj-carousel .swiper-button-next,
+.emj-scope .emj-carousel .swiper-button-prev {
+    color: #fff;
+    background: rgba(0,0,0,0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.emj-scope .emj-carousel .swiper-button-next:after,
+.emj-scope .emj-carousel .swiper-button-prev:after {
+    font-size: 18px;
+}
+.emj-scope .emj-carousel .swiper-pagination-bullet-active {
+    background: #fff;
+}
+
+/* JUSTIFIED (filas sin huecos) */
+.emj-scope .emj-row{display:flex;gap:var(--gap,6px);margin-bottom:var(--gap,6px)}
+.emj-scope .emj-row:last-child{margin-bottom:0}
+
+/* Mosaico (bloque grande + columna) */
+.emj-scope .emj-row.mosaic{display:flex;gap:var(--gap,6px);margin-bottom:var(--gap,6px)}
+.emj-scope .emj-big{position:relative;overflow:hidden;}
+.emj-scope .emj-col{display:flex;flex-direction:column;gap:var(--gap,6px)}
+
+/* Ítems */
+.emj-scope .emj-item{display:block;position:relative;overflow:hidden;cursor:zoom-in}
+.emj-scope .emj-item img{width:100%;height:100%;object-fit:cover;transition:transform .25s ease}
+.emj-scope .emj-item:hover img{transform:scale(1.03)}
+.emj-scope .emj-cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent, rgba(0,0,0,.6));color:#fff;padding:10px 12px;font-size:13px;opacity:.95}
+
+/* GLightbox Customization */
+.glightbox-container .gslide-title {
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #fff;
+    margin-bottom: 5px;
+}
+.glightbox-container .gslide-description {
+    font-family: inherit;
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.8);
+    background: transparent !important;
+}
+.glightbox-container .gdesc-inner {
+    padding: 20px !important;
+    background: rgba(0,0,0,0.5) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 0 0 10px 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+.glightbox-container .gslide-description.description-bottom {
+    border: none !important;
+    box-shadow: none !important;
+}
+/* Estilo premium para los controles del lightbox */
+.glightbox-container .gprev, .glightbox-container .gnext, .glightbox-container .gclose {
+    background: rgba(255,255,255,0.1) !important;
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+}
+.glightbox-container .gprev:hover, .glightbox-container .gnext:hover, .glightbox-container .gclose:hover {
+    background: rgba(255,255,255,0.2) !important;
+}
+
+/* Fondo sin scroll al abrir */
+body.emj-no-scroll{overflow:hidden}
+
+/* ========= Fallback visible dentro del editor de Elementor ========= */
+.elementor-editor-active .emj-wrap,
+.elementor-edit-mode .emj-wrap { min-height:120px; }
+
+.elementor-editor-active .emj-wrap:not(.emj-ready),
+.elementor-edit-mode .emj-wrap:not(.emj-ready){
+  display:flex; flex-wrap:wrap; gap:var(--gap,6px);
+}
+
+.elementor-editor-active .emj-wrap:not(.emj-ready) .emj-item,
+.elementor-edit-mode .emj-wrap:not(.emj-ready) .emj-item{
+  width:calc(25% - var(--gap,6px)); height:140px; border-radius:8px; overflow:hidden;
+}
+
+@media (max-width:1024px){
+  .elementor-editor-active .emj-wrap:not(.emj-ready) .emj-item,
+  .elementor-edit-mode .emj-wrap:not(.emj-ready) .emj-item{
+    width:calc(33.333% - var(--gap,6px)); height:130px;
+  }
+}
+@media (max-width:768px){
+  .elementor-editor-active .emj-wrap:not(.emj-ready) .emj-item,
+  .elementor-edit-mode .emj-wrap:not(.emj-ready) .emj-item{
+    width:calc(50% - var(--gap,6px)); height:120px;
+  }
+}
+
+.elementor-editor-active .emj-wrap:not(.emj-ready) .emj-item img,
+.elementor-edit-mode .emj-wrap:not(.emj-ready) .emj-item img{
+  width:100%; height:100%; object-fit:cover;
+}
+
+/* Evita parpadeos fuertes en editor */
+.elementor-editor-active .emj-item img,
+.elementor-edit-mode .emj-item img{ transition:none; }
