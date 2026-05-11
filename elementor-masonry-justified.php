@@ -27,6 +27,11 @@ define( 'EMJ_GITHUB_REPO', 'elementor-masonry-justified' );
 
 require_once EMJ_DIR . 'includes/class-eweb-github-updater.php';
 
+function emj_load_textdomain(): void {
+    load_plugin_textdomain( 'emj', false, dirname( plugin_basename( EMJ_FILE ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'emj_load_textdomain' );
+
 function emj_bootstrap(): void {
     if ( ! did_action( 'elementor/loaded' ) || ! class_exists( '\\Elementor\\Plugin' ) ) {
         add_action( 'admin_notices', 'emj_missing_elementor_notice' );
@@ -44,7 +49,7 @@ function emj_missing_elementor_notice(): void {
         return;
     }
 
-    echo '<div class="notice notice-error"><p><strong>EWEB - Elementor Masonry Justified</strong> requires Elementor to be installed and active.</p></div>';
+    echo '<div class="notice notice-error"><p><strong>' . esc_html__( 'EWEB - Elementor Masonry Justified', 'emj' ) . '</strong> ' . esc_html__( 'requires Elementor to be installed and active.', 'emj' ) . '</p></div>';
 }
 
 function emj_register_widget( $widgets_manager ): void {

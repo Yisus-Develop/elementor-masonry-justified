@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) exit;
 
 class EMJ_Justified_Widget extends \Elementor\Widget_Base {
   public function get_name(){ return 'emj_justified'; }
-  public function get_title(){ return 'Masonry Justified (Vanilla)'; }
+  public function get_title(){ return esc_html__( 'EWEB Masonry Justified', 'emj' ); }
   public function get_icon(){ return 'eicon-gallery-justified'; }
   public function get_categories(){ return ['general']; }
   public function get_keywords(){ return ['gallery','justified','masonry','grid','images','lightbox','carousel','slider']; }
